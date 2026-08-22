@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PPT Agent Pro — Annotated Wireframe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script>
+    tailwind = {
+      config: {
+        darkMode: 'class'
+      }
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bg: #f7f7f8;
+      --card: #ffffff;
+      --block: #e3e3e6;
+      --block-dk: #d4d4d9;
+      --rule: #c9c9cf;
+      --rule-light: #ededf0;
+      --ink: #1c1b1a;
+      --pencil: #6b6a70;
+      --accent: #d8482b;
+      --accent-soft: #fdf2f0;
+      --blue: #2f6df0;
+      --success: #16a34a;
+      --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', monospace;
+    }
+    .dark {
+      --bg: #0b0f19;
+      --card: #111827;
+      --block: #1f2937;
+      --block-dk: #374151;
+      --rule: #374151;
+      --rule-light: #1f2937;
+      --ink: #f9fafb;
+      --pencil: #9ca3af;
+      --accent: #f87171;
+      --accent-soft: #1e1e2d;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      font: 14px/1.5 var(--sans);
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+    .font-mono-code {
+      font-family: var(--mono);
+    }
+    .font-sans-main {
+      font-family: var(--sans);
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="module" src="/web/src/main.ts"></script>
+</body>
+</html>
