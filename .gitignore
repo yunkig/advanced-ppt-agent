@@ -24,6 +24,6 @@ dist-ssr/
 .idea
 .DS_Store
 
-# Project generated checkpoints / runtime caches
-projects/.checkpoints/
-projects/*/*.pptx
+# Project generated checkpoints / runtime caches / demo outputs
+projects/*
+!projects/.gitkeep
