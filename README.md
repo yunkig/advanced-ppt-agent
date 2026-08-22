@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🚀 PPT Agent Pro (Advanced PPT Agent)
+# 🐦⬛ PPT Agent Pro (Advanced PPT Agent)
 
 ### 工业级全链路 Multi-Agent 智能演示文稿生成系统
 
@@ -25,7 +25,7 @@
 
 ---
 
-## 📖 项目简介
+## 🐦⬛ 项目简介
 
 **PPT Agent Pro** 是一套面向企业级落地的 **全链路 AIGC 多智能体（Multi-Agent）演示文稿生成系统**。
 
@@ -35,42 +35,42 @@ $$\text{S0 意图识别与技能路由} \longrightarrow \text{S1 自适应联网
 
 ---
 
-## ✨ 核心特性亮点
+## 🐦⬛ 核心特性亮点
 
-### 🤖 1. 工业级 Leader-Worker-Review 多智能体协同拓扑
+### 🐦⬛ 1. 工业级 Leader-Worker-Review 多智能体协同拓扑
 - **Leader Agent**：将复杂的整份 PPT 拆解为多个独立业务大模块（Section），派发给独立的 Sub-Agents。
 - **Worker Sub-Agents**：并发生成各自负责的层次化页面（如 1.1 / 1.2 分块），上下文相互隔离，彻底解决 Token 爆炸与长文本风格衰减。
 - **Review Agent（四维质检闭环）**：对每个 Sub-Agent 交付的产物执行 **语法与表述校验、视觉排版多模态校验（溢出/重叠/缺页）、Plan 大纲结构符合度、原始意图吻合度** 四维核验，具备 `autoFix` 局部补丁与原地重做自省回路。
 
-### 🔄 2. 14 阶段显式有限状态机 (Deterministic FSM)
+### 🐦⬛ 2. 14 阶段显式有限状态机 (Deterministic FSM)
 - 采用严格的显式转移表（Transition Rule Set），彻底杜绝状态非法越权跳转。
 - 提供 `onEnter` / `onLeave` 统一生命周期钩子，实现原子化的状态广播、时间戳打标与持久化触发。
 
-### ⚡ 3. SSE 流式传输与高可用断线重放
+### 🐦⬛ 3. SSE 流式传输与高可用断线重放
 - **服务端 Ring Buffer**：维护循环事件缓冲区，记录所有历史阶段与日志。
 - **增量续传**：基于标准 HTTP `Last-Event-ID` 机制，网络抖动或断线重连后无缝从指定序列号补齐丢包。
 - **指数退避 + Full Jitter**：客户端内置抖动退避重连算法，有效防止服务器重启时的海量瞬时网络风暴。
 
-### 📝 4. 层次化大纲规划 (Plan-and-Solve) 与双预览模板系统
+### 🐦⬛ 4. 层次化大纲规划 (Plan-and-Solve) 与双预览模板系统
 - 结构化生成 **5 大核心业务模块 + 1.x 子分块页面** 的层次化 Markdown 大纲树。
 - 模版匹配引擎根据行业场景自适应推荐配色规范与调色板，提供 HITL（Human-in-the-Loop）大纲与可视化卡片双重审批流。
 
-### 🔍 5. 自适应双阶段检索 (Adaptive Search & Rerank)
+### 🐦⬛ 5. 自适应双阶段检索 (Adaptive Search & Rerank)
 - **初次宽泛检索**：Query 结构化重写与初次 WebSearch 检索。
 - **需求澄清循环**：通过 `Ask user question` 表单反问用户关键参数（页数、受众、风格偏好）。
 - **二次精准 Rerank**：结合澄清参数二次重排知识库，输出高质量精简上下文。
 
-### 💾 6. QueryID 原子写盘与崩溃恢复 (Crash-Safe Checkpoint)
+### 🐦⬛ 6. QueryID 原子写盘与崩溃恢复 (Crash-Safe Checkpoint)
 - 每次阶段流转自动触发快照落盘：采用 **“先写 `.tmp` 临时文件 $\rightarrow$ `fsync` 刷盘 $\rightarrow$ 原子 `rename`”** 流程，避免意外断电造成 JSON 损坏。
 - 支持任意时刻通过 `WorkflowRunner.runFromCheckpoint(queryID)` 恢复到中断现场继续推进。
 
-### 📱 7. 现代化全栈双端可视化界面 (Vue 3 + Tailwind CSS)
+### 🐦⬛ 7. 现代化全栈双端可视化界面 (Vue 3 + Tailwind CSS)
 - 提供响应式 **手机端模拟器 UI** 与桌面端管理后台。
 - 包含实时阶段进度指示器、SSE 实时控制台、HITL 澄清/大纲审批弹窗、四维质检实时雷达仪表盘。
 
 ---
 
-## 📐 全景架构图 (S0 ~ S3)
+## 🐦⬛ 全景架构图 (S0 ~ S3)
 
 ```mermaid
 flowchart TD
@@ -121,12 +121,12 @@ flowchart TD
         ReviewChecks -->|全量达标| Merge[多模块成果物合并 & Python PPTX 编译器]
     end
 
-    Merge --> Done([🎉 导出原生 .pptx / 进入交付展示环节])
+    Merge --> Done([🐦⬛ 导出原生 .pptx / 进入交付展示环节])
 ```
 
 ---
 
-## 🔄 14 阶段有限状态机 (FSM Lifecycle)
+## 🐦⬛ 14 阶段有限状态机 (FSM Lifecycle)
 
 本项目状态机在 `server/src/core/state-machine.ts` 中以纯函数状态转移矩阵进行定义：
 
@@ -149,11 +149,11 @@ flowchart TD
 
 ---
 
-## 📂 模块划分与工程目录树
+## 🐦⬛ 模块划分与工程目录树
 
 ```text
 advanced-ppt-agent/
-├── docs/                                # 🎓 全套源码级架构教学与面试通关指南
+├── docs/                                # 🐦⬛ 全套源码级架构教学与面试通关指南
 │   └── tutorial/
 │       ├── 00_GLOBAL_ARCHITECTURE.md    # 模块00: 全局架构与 14 阶段有限状态机
 │       ├── 01_S0_INTENT_ROUTING.md      # 模块01: 意图识别与技能路由
@@ -163,7 +163,7 @@ advanced-ppt-agent/
 │       ├── 05_S3_REVIEW_AGENT_4D...md   # 模块05: Review Agent 四维质检自省闭环
 │       ├── 06_INTERVIEW_MASTER...md     # 模块06: 架构师级面试通关宝典与 Q&A
 │       └── README.md                    # 教程全集导航索引
-├── server/                              # 🖥️ 服务端核心逻辑 (Node.js + TypeScript)
+├── server/                              # 🐦⬛ 服务端核心逻辑 (Node.js + TypeScript)
 │   ├── src/
 │   │   ├── agents/                      # 智能体核心实现
 │   │   │   ├── intent-router.ts         # S0: 意图路由智能体
@@ -194,7 +194,7 @@ advanced-ppt-agent/
 │   │   └── index.ts                     # Express 后端主入口
 │   └── test/
 │       └── full-pipeline.test.ts        # Vitest 自动化单元与集成测试套件
-├── web/                                 # 📱 现代化响应式前端 (Vue 3 + Tailwind CSS)
+├── web/                                 # 🐦⬛ 现代化响应式前端 (Vue 3 + Tailwind CSS)
 │   └── src/
 │       ├── components/
 │       │   ├── ClarificationForm.vue    # S1 阶段需求澄清表单交互组件
@@ -217,7 +217,7 @@ advanced-ppt-agent/
 
 ---
 
-## 🚀 快速启动与演示
+## 🐦⬛ 快速启动与演示
 
 ### 1. 环境准备
 - **Node.js**: $\ge 20.0.0$
@@ -258,12 +258,12 @@ npm run dev
 ```
 
 启动成功后：
-- 📱 **前端界面**：打开浏览器访问 [http://localhost:5188](http://localhost:5188)
-- 🔌 **后端 API**：[http://localhost:3000](http://localhost:3000)
+- 🐦⬛ **前端界面**：打开浏览器访问 [http://localhost:5188](http://localhost:5188)
+- 🐦⬛ **后端 API**：[http://localhost:3000](http://localhost:3000)
 
 ---
 
-## 📡 SSE 流式通信与断线重连规范
+## 🐦⬛ SSE 流式通信与断线重连规范
 
 客户端与服务端通过标准 SSE（Server-Sent Events）建立单向长连接通道：
 
@@ -289,28 +289,28 @@ Last-Event-ID: 104
 
 ---
 
-## 🎓 全套源码级教程与面试指南
+## 🐦⬛ 全套源码级教程与面试指南
 
 本项目在 [`docs/tutorial/`](./docs/tutorial/) 目录下提供了详尽的源码解析与大厂技术面试通关文档：
 
-- 📘 [**模块 00：全局架构与 14 阶段状态机全景篇**](./docs/tutorial/00_GLOBAL_ARCHITECTURE.md)  
+- 🐦⬛ [**模块 00：全局架构与 14 阶段状态机全景篇**](./docs/tutorial/00_GLOBAL_ARCHITECTURE.md)  
   *深入剖析有限状态机、RingBuffer 事件广播与原子落盘恢复机制。*
-- 📘 [**模块 01：阶段 0 意图识别与技能路由篇**](./docs/tutorial/01_S0_INTENT_ROUTING.md)  
+- 🐦⬛ [**模块 01：阶段 0 意图识别与技能路由篇**](./docs/tutorial/01_S0_INTENT_ROUTING.md)  
   *多意图精准拦截、`@PPT` 显式指令与自然语言特征抽取。*
-- 📘 [**模块 02：阶段 1 自适应检索与需求对齐篇**](./docs/tutorial/02_S1_ADAPTIVE_SEARCH_AND_CLARIFICATION.md)  
+- 🐦⬛ [**模块 02：阶段 1 自适应检索与需求对齐篇**](./docs/tutorial/02_S1_ADAPTIVE_SEARCH_AND_CLARIFICATION.md)  
   *Query 结构化重写、Agent Loop 1 澄清表单与精准 Rerank 机制。*
-- 📘 [**模块 03：阶段 2 层次化大纲与模板解耦篇**](./docs/tutorial/03_S2_HIERARCHICAL_PLAN_AND_TEMPLATE.md)  
+- 🐦⬛ [**模块 03：阶段 2 层次化大纲与模板解耦篇**](./docs/tutorial/03_S2_HIERARCHICAL_PLAN_AND_TEMPLATE.md)  
   *5 大业务模块大纲规划、视觉配色映射与 HITL 双预览审批门禁。*
-- 📘 [**模块 04：阶段 3 Leader-Worker 模块化并发生成篇**](./docs/tutorial/04_S3_LEADER_AND_SUBAGENT_DISTRIBUTED.md)  
+- 🐦⬛ [**模块 04：阶段 3 Leader-Worker 模块化并发生成篇**](./docs/tutorial/04_S3_LEADER_AND_SUBAGENT_DISTRIBUTED.md)  
   *Leader 模块级拆包派发、Sub-Agents 上下文隔离与独立渲染。*
-- 📘 [**模块 05：阶段 3 Review Agent 四维质检与自省修复篇**](./docs/tutorial/05_S3_REVIEW_AGENT_4D_QUALITY_LOOP.md)  
+- 🐦⬛ [**模块 05：阶段 3 Review Agent 四维质检与自省修复篇**](./docs/tutorial/05_S3_REVIEW_AGENT_4D_QUALITY_LOOP.md)  
   *语法/排版溢出/大纲/诉求四维核验、autoFix 原地自省补丁与打回重做。*
-- 🏆 [**模块 06：面试终极通关宝典与架构师级 Q&A**](./docs/tutorial/06_INTERVIEW_MASTER_CHEATSHEET.md)  
+- 🐦⬛ [**模块 06：面试终极通关宝典与架构师级 Q&A**](./docs/tutorial/06_INTERVIEW_MASTER_CHEATSHEET.md)  
   *1 分钟开场话术、简历核心技术亮点包装、高频刁钻追问与满分回答模板。*
 
 ---
 
-## 💻 技术栈一览
+## 🐦⬛ 技术栈一览
 
 - **Core & Runtime**: Node.js, TypeScript 5.6
 - **Server Framework**: Express 4, SSE (Server-Sent Events)
@@ -320,7 +320,7 @@ Last-Event-ID: 104
 
 ---
 
-## 🤝 贡献与反馈
+## 🐦⬛ 贡献与反馈
 
 欢迎提交 Issue 和 Pull Request 来完善本项目！
 
@@ -332,6 +332,6 @@ Last-Event-ID: 104
 
 ---
 
-## 📄 开源协议
+## 🐦⬛ 开源协议
 
 本项目采用 [MIT License](./LICENSE) 协议开源。
